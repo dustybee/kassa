@@ -1,0 +1,229 @@
+<!-- made by Damian Vera -->
+<!DOCTYPE HTML>
+<html lang="nl">
+    <head>
+        <title>AH POS</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="stylesheets/pos.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+    </head>
+    <body>
+        <div id="main-container">
+            <div id="main-screen" class="container">
+                    <div id="bon_container">
+                        <div id="bon_header">
+                            <img src="/images/pos/ah_logo.png" alt="AH" align="left">
+                            <p>EUR</p>
+                        </div>
+                        <div id="bon_items">
+                            <span class="aantal"></span>
+                            <span class="item_naam"></span>
+                            <span class="prijs"></span>
+                        </div>
+                        <div id="bon_footer">
+                            <p id="bon_footer_text">druk op kassabon om te printen</p>
+                        </div>
+                    </div>
+                    
+                    <div id="middle_container">
+                        <div id="dataInput">
+                        </div>
+                        <div id="note_container">
+                        </div>
+                        <div id="symbol_container">
+                            <img id="bonuskaart" src="/images/pos/bonuskaart.png" alt="bonuskaart" align="left">
+                            <img id="airmiles" src="/images/pos/airmiles.png" alt="airmiles" align="left">
+                            <img id="age" src="/images/pos/age.png" alt="age" align="right">
+                        </div>
+                        <div id="keys">
+                            <div id="function_button_container">
+                                <button id="button-subtotaal" class="function_button" data-keyboard="subtotaal">Subtotaal</button>
+                                <button id="button-plu" class="function_button" data-keyboard="plu">PLU</button>
+                                <button id="button-aantal" class="function_button" data-keyboard="aantal">Aantal</button>
+                                <button id="button-35procent" class="function_button dark" data-keyboard="35procent">35%</br>Korting</button>
+                                <button id="button-zegels" class="function_button dark" data-keyboard="zegels">Zegels</button>
+                            </div>
+
+                            <!--Numeriek toetsenbord met herstel-->
+                            <div id="number_button_container">
+                                <button data-number="7" id="button-7" class="number_button">7</button>
+                                <button data-number="8" id="button-8" class="number_button">8</button>
+                                <button data-number="9" id="button-9" class="number_button">9</button>
+                                <break></break>
+                                <button data-number="4" id="button-4" class="number_button">4</button>
+                                <button data-number="5" id="button-5" class="number_button">5</button>
+                                <button data-number="6" id="button-6" class="number_button">6</button>
+                                <break></break>
+                                <button data-number="1" id="button-1" class="number_button">1</button>
+                                <button data-number="2" id="button-2" class="number_button">2</button>
+                                <button data-number="3" id="button-3" class="number_button">3</button>
+                                <break></break>
+                                <button data-number="0" id="button-0" class="number_button">0</button>
+                                <button data-number="00" id="button-00" class="number_button">00</button>
+                                <button id="button-c" class="number_button">C</button>
+                                <break></break>
+                                <button data-type="herstel" id="button-herstel" class="function_button herstel dark" data-keyboard="herstel">Herstel</button>
+                            </div>
+                        </div>
+                        <!--Kassa informatie blok onder het numeriek toetsenbord-->
+                        <div id="info">
+                            <div id="">
+                                <span id="kassa">Kassa:</span>
+                                <span id="kassaNumber"></span>
+                            </div>
+                            <div id="">
+                                <span id="employee">Caissiere:</span>
+                                <span id="employeeNumber"></span>
+                            </div>
+                            <span id="time"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Plu lijst AGF stuks-->
+                <div id="plu-lijst-screen" class="container">
+                    <button data-item="AH AUBERGINE" data-plu="5445" data-price="0.99" class="plu-button"><img src="/images/pos/aubergine.png" alt="" align="left"><span class="plu-code">5445</span><span class="plu-item-name">&nbsp; Aubergine</span></button>
+                    <button data-item="AVOCADO" data-plu="277" data-price="1.09" class="plu-button"><img src="/images/pos/avocado.png" alt="" align="left"><span class="plu-code" >277</span><span class="plu-item-name">&nbsp; Avocado</span></button>
+                    <button data-item="BLOEMKOOL" data-plu="3" data-price="1.99" class="plu-button"><img src="/images/pos/bloemkool.png" alt="" align="left"><span class="plu-code" >&nbsp;3</span><span class="plu-item-name">&nbsp; Bloemkool</span></button>
+                    <button data-item="BOSPEEN" data-plu="88" data-price="1.29" class="plu-button"><img src="/images/pos/bospeen.png" alt="" align="left"><span class="plu-code" >88</span><span class="plu-item-name">&nbsp; Bospeen</span></button>
+                    <button data-item="COURGETTE" data-plu="63" data-price="0.89" class="plu-button"><img src="/images/pos/courgette.png" alt="" align="left"><span class="plu-code" >63</span><span class="plu-item-name">&nbsp; Courgette</span></button>
+                    <button data-item="IETS KRUIMIGE AARDAPPELEN" data-price="3.79" data-plu="139" class="plu-button"><img src="/images/pos/kruimige-aarappelen.png" alt="" align="left"><span class="plu-code" >139</span><span class="plu-item-name">&nbsp;kruimige aar</span></button>
+                    <button data-item="IJSBERGSLA" data-plu="95" data-price="1.19" class="plu-button"><img src="/images/pos/ijsbergsla.png" alt="" align="left"><span class="plu-code" >95</span><span class="plu-item-name">&nbsp;Ijsbergsla</span></button>
+                    <button data-item="KNOLSELDERIJ" data-plu="66" data-price="0.95" class="plu-button"><img src="/images/pos/knolselderij.png" alt="" align="left"><span class="plu-code" >66</span><span class="plu-item-name">&nbsp;Knolselderij</span></button>
+                    <button data-item="KOMKOMMER" data-plu="10" data-price="0.99" class="plu-button"><img src="/images/pos/komkommer.png" alt="" align="left"><span class="plu-code" >10</span><span class="plu-item-name">&nbsp;Komkommer</span></button>
+                    <button data-item="KROPSLA" data-plu="36" data-price="1.19" class="plu-button"><img src="/images/pos/kropsla.png" alt="" align="left"><span class="plu-code" >36</span><span class="plu-item-name">&nbsp;Kropsla</span></button>
+                    <button data-item="PAPRIKA GEEL" data-plu="247" data-price="0.99" class="plu-button"><img src="/images/pos/paprika-geel.png" alt="" align="left"><span class="plu-code" >247</span><span class="plu-item-name">&nbsp;Paprika geel</span></button>
+                    <button data-item="PAPRIKA GROEN " data-plu="385" data-price="0.99" data class="plu-button"><img src="/images/pos/paprika-groen.png" alt="" align="left"><span class="plu-code" >385</span><span class="plu-item-name">&nbsp;Paprika groen</span></button>
+                    <button data-item="PAPRIKA ORANJE" data-plu="386" data-price="0.99" class="plu-button"><img src="/images/pos/paprika-oranje.png" alt="" align="left"><span class="plu-code" >386</span><span class="plu-item-name">&nbsp;paprika oranje</span></button>
+                    <button data-item="PAPRIKA ROOD" data-plu="833" data-price="0.99" class="plu-button"><img src="/images/pos/paprika-rood.png" alt="" align="left"><span class="plu-code" >833</span><span class="plu-item-name">&nbsp;paprika rood</span></button>
+                    <button data-item="SPITSKOOL" data-plu="490" data-price="1.29" class="plu-button"><img src="/images/pos/spitskool.png" alt="" align="left"><span class="plu-code" >490</span><span class="plu-item-name">&nbsp;Spitskool</span></button>
+                    <button data-item="PREI" data-plu="301" data-price="0.55" class="plu-button"><img src="/images/pos/prei.png" alt="" align="left"><span class="plu-code" >301</span><span class="plu-item-name">&nbsp;Prei</span></button>
+                    <button data-item="SALADE UI" data-plu="198" data-price="0.79" class="plu-button"><img src="/images/pos/salade-ui.png" alt="" align="left"><span class="plu-code" >198</span><span class="plu-item-name">&nbsp;Salade-ui</span></button>
+                    <button data-item="WINERPEEN" data-plu="538" data-price="1.29" class="plu-button"><img src="/images/pos/bospeen.png" alt="" align="left"><span class="plu-code" >538</span><span class="plu-item-name">&nbsp;winterpeen</span></button>
+                    <button data-item="BLEEKSELDERIJ" data-plu="5560" data-price="0.99" class="plu-button"><img src="/images/pos/bleekselderij.png" alt="" align="left"><span class="plu-code" >5560</span><span class="plu-item-name">&nbsp;Bleekslederij</span></button>
+                    <button data-item="VASTKOKENDE AARDAPPELEN" data-price="3.79" data-plu="182" class="plu-button"><img src="/images/pos/vastkokende-aardappelen.png" alt="" align="left"><span class="plu-code" >182</span><span class="plu-item-name">&nbsp;vastkokende </span></button>
+                    <button data-item="VENKEL" data-plu="306" data-price="1.05" class="plu-button"><img src="/images/pos/venkel.png" alt="" align="left"><span class="plu-code" >306</span><span class="plu-item-name">&nbsp;Venkel</span></button>
+                    <button data-item="RADIJS" data-plu="5553" data-price="0.99" class="plu-button"><img src="/images/pos/radijs.png" alt="" align="left"><span class="plu-code" >5559</span><span class="plu-item-name">&nbsp;Radijs</span></button>
+                    <button data-item="SEREH" data-plu="233" data-price="0.99" class="plu-button"><img src="/images/pos/sereh.png" alt="" align="left"><span class="plu-code" >233</span><span class="plu-item-name">&nbsp;Sereh</span></button>
+                    <button data-item="RODE PEPER" data-plu="749" data-price="0.29" class="plu-button"><img src="/images/pos/rode-peper.png" alt="" align="left"><span class="plu-code" >749</span><span class="plu-item-name">&nbsp;Rode peper</span></button>
+                    <button data-item="BIO COURGETTE" data-plu="842" data-price="1.49" class="plu-button"><img src="/images/pos/bio-courgette.png" alt="" align="left"><span class="plu-code" >842</span><span class="plu-item-name">&nbsp;Bio Courgette</span></button>
+                </div>
+
+            <!--Start of the menu's-->
+
+                <!--het hoofdmenu-->
+                <div id="terug" class="menuoptions">
+                    <button data-button="betalen"  class="menu_button"><img src="/images/pos/euro.png" alt="" align="left">Betalen</button>
+                    <button data-button="loyalty" class="menu_button"><img src="/images/pos/bonuskaart_menu.png" alt="" align="left">Loyalty</button>
+                    <button data-button="prijs-overig" class="menu_button"><img src="/images/pos/arrow.png" alt="" align="left">Prijs overig</button>
+                    <button data-button="plu-lijst" data-container="plu-lijst" class="menu_button"><img src="/images/pos/food-basket.png" alt="" align="left">PLU lijst</button>
+                    <button data-button="plu-lijst" class="menu_button"><img src="/images/pos/food-basket.png" alt="" align="left">PLU lijst overig</button>
+                    <button data-button="correcties" class="menu_button"><img src="/images/pos/eraser.png" alt="" align="left">Correcties</button>
+                    <button data-button="kassa-functies" class="menu_button"><img src="/images/pos/cog.png" alt="" align="left">Kassa Functies</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                </div>
+
+                <!--het batalen menu-->
+                <div id="betalen" class="menuoptions">
+                    <button data-button="contant"  class="menu_button"><img src="/images/pos/contant.png" alt="" align="left">Contant</button>
+                    <button data-button="50-euro" class="menu_button"><img src="/images/pos/50-euro.png" alt="" align="left">€ 50</button>
+                    <button data-button="20-euro" class="menu_button"><img src="/images/pos/20-euro.png" alt="" align="left">€ 20</button>
+                    <button data-button="10-euro" class="menu_button"><img src="/images/pos/10-euro.png" alt="" align="left">€ 10</button>
+                    <button data-button="5-euro" class="menu_button"><img src="/images/pos/5-euro.png" alt="" align="left">€ 5</button>
+                    <button data-button="overig-betalen" class="menu_button"><img src="/images/pos/euro.png" alt="" align="left">Overig betalen</button>
+                    <button data-button="Pin" class="menu_button"><img src="/images/pos/pin-logo.png" alt="" align="left">Pin</button>
+                    <button data-button="terug" class="menu_button"><img src="/images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+
+                <!--het Loyalty menu-->
+                <div id="loyalty" class="menuoptions">
+                    <button data-button="airmmiles-opvragen"  class="menu_button"><img src="/images/pos/airmiles-opvragen.png" alt="" align="left">Airmiles</br>Opvragen</button>
+                    <button data-button="airmiles-verzilveren" class="menu_button"><img src="/images/pos/airmiles-verzilveren.png" alt="" align="left">Airmiles</br>Verzilveren</button>
+                    <button data-button="airmiles-vergoeden" class="menu_button"><img src="/images/pos/airmiles-vergoeden.png" alt="" align="left">Airmiles</br>vergoeden</button>
+                    <button data-button="zegels-opvragen" class="menu_button"><img src="/images/pos/zegels-opvragen.png" alt="" align="left">Zegels</br>opvragen</button>
+                    <button data-button="guldenzegels-opvragen" class="menu_button"><img src="/images/pos/guldenzegels-verzilveren.png" alt="" align="left">Gulden-</br>Zegels</br>verzilveren</button>
+                    <button data-button="mijnbonus" class="menu_button"><img src="/images/pos/mijnbonus.png" alt="" align="left">Verreken</br>MijnBonus</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="terug" class="menu_button"><img src="/images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+                
+                <!--prijs overig-->
+                <div id="prijs-overig" class="menuoptions">
+                    <button data-button="prijs-opvraag"  class="menu_button"><img src="/images/pos/prijs-opvraag.png" alt="" align="left">Prijs opvraag</button>
+                    <button data-button="statiegeld" class="menu_button"><img src="/images/pos/statiegeld.png" alt="" align="left">Statiegeld</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="niet-scanbaar" class="menu_button"><img src="/images/pos/niet-scanbaar.png" alt="" align="left">Niet</br>scanbaar</button>
+                    <button data-button="dubbele-prijs" class="menu_button"><img src="/images/pos/dubbele-prijs.png" alt="" align="left">Dubbele prijs</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="terug" class="menu_button"><img src="/images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+                
+                <!--Het hoofd plu-lijst menu-->
+                <div id="plu-lijst" class="menuoptions">
+                    <button data-button="agf-stuks-artikelen"  class="menu_button"><img src="/images/pos/agf-stuks-artikelen.png" alt="" align="left">AGF stuks</br>artikelen</button>
+                    <button data-button="agf-wicht-artikelen" class="menu_button"><img src="/images/pos/agf-wicht-artikelen.png" alt="" align="left">AGF wicht</br>artikelen</button>
+                    <button data-button="frisdrank-water" class="menu_button"><img src="/images/pos/frisdrank-water.png" alt="" align="left">Frisdrank/</br>water</button>
+                    <button data-button="bier-wijn" class="menu_button"><img src="/images/pos/bier-wijn.png" alt="" align="left">Bier/</br>wijn</button>
+                    <button data-button="non-food" class="menu_button"><img src="/images/pos/kattenbak-korrels-menu.png" alt="" align="left">Non-food</button>
+                    <button data-button="brood" class="menu_button"><img src="/images/pos/stokbrood-menu.png" alt="" align="left">Brood</button>
+                    <button data-button="servicebalie-bellen" class="menu_button"><img src="/images/pos/mijnbonus.png" alt="" align="left">Servicebalie/</br>bellen</button>
+                    <button data-button="terug" class="menu_button"><img src="/images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+
+                <!--correcties menu-->
+                <div id="correcties" class="menuoptions">
+                    <button data-button="eerdere-regelcorrectie"  class="menu_button"><img src="/images/pos/eerdere-regelcorrectie.png" alt="" align="left">Eerdere</br>regelcorrectie</button>
+                    <button data-button="regel-correctie" class="menu_button"><img src="/images/pos/regelcorrectie.png" alt="" align="left">Regel</br>correctie</button>
+                    <button data-button="print-laatste-bon" class="menu_button"><img src="/images/pos/print-laatste-bon.png" alt="" align="left">Print</br>laatste bon</button>
+                    <button data-button="kassacorrectie" class="menu_button"><img src="/images/pos/kassacorrectie.png" alt="" align="left">kassa-</br>correctie</button>
+                    <button data-button="zegelcorrectie" class="menu_button"><img src="/images/pos/zegel-correctie.png" alt="" align="left">Zegel-</br>correctie</button>
+                    <button data-button="vergoeden" class="menu_button"><img src="/images/pos/vergoeden.png" alt="" align="left">Vergoeden</button>
+                    <button data-button="ruilen" class="menu_button"><img src="/images/pos/ruilen.png" alt="" align="left">Ruilen</button>
+                    <button data-button="terug" class="menu_button"><img src="/images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+
+                <!--Het kassa functies menu-->
+                <div id="kassa-functies" class="menuoptions">
+                    <button data-button="afmelden"  class="menu_button"><img src="/images/pos/user.png" alt="" align="left">Afmelden</button>
+                    <button data-button="PIN-EFT-functies" class="menu_button"><img src="/images/pos/pin-logo.png" alt="" align="left">Pin/EFT</br>functies</button>
+                    <button data-button="transactie-annuleren" class="menu_button"><img src="/images/pos/transactie-annuleren.png" alt="" align="left">Transactie</br>annuleren</button>
+                    <button data-button="parkeren" class="menu_button"><img src="/images/pos/parkeren.png" alt="" align="left">Parkeren</button>
+                    <button data-button="opvragen" class="menu_button"><img src="/images/pos/opvragen.png" alt="" align="left">Opvragen</button>
+                    <button data-button="scherm-instellingen" class="menu_button"><img src="/images/pos/scherm-instellingen.png" alt="" align="left">Scherm</br>instellingen</button>
+                    <button data-button="kassa-status" class="menu_button"><img src="/images/pos/kassa-status-ok.png" alt="" align="left">Kassa</br>status OK</button>
+                    <button data-button="terug" class="menu_button"><img src="/images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+
+            <!--End of the main menu's -->
+
+            <!--Beginning of the sub-menu's-->
+            
+            <!--AGF stuks artikelen menu-->
+                <div id="agf-stuks-artikelen" class="menuoptions">
+                    <button data-button="groente"  class="menu_button"><img src="/images/pos/groente.png" alt="" align="left">Groente</button>
+                    <button data-button="groente2" class="menu_button"><img src="/images/pos/groente2.png" alt="" align="left">groente2</button>
+                    <button data-button="appels" class="menu_button"><img src="/images/pos/appels.png" alt="" align="left">Appels</button>
+                    <button data-button="peren" class="menu_button"><img src="/images/pos/peren.png" alt="" align="left">Peren</button>
+                    <button data-button="fruit-overig" class="menu_button"><img src="/images/pos/fruit-overig.png" alt="" align="left">Fruit Overig</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="terug" class="menu_button"><img src="/images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+                
+            <!--Frisdrank water menu-->
+            <div id="frisdrank-water" class="menuoptions">
+                <button data-button="groente"  class="menu_button"><img src="/images/pos/groente.png" alt="" align="left">Groente</button>
+                <button data-button="groente2" class="menu_button"><img src="/images/pos/groente2.png" alt="" align="left">groente2</button>
+                <button data-button="appels" class="menu_button"><img src="/images/pos/appels.png" alt="" align="left">Appels</button>
+                <button data-button="peren" class="menu_button"><img src="/images/pos/peren.png" alt="" align="left">Peren</button>
+                <button data-button="fruit-overig" class="menu_button"><img src="/images/pos/fruit-overig.png" alt="" align="left">Fruit Overig</button>
+                <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                <button data-button="terug" class="menu_button"><img src="/images/pos/terug.png" alt="back" align="left">Terug</button>
+            </div>
+            </div>            
+        <script src="/scripts/kassa.js"></script>
+    </body>
+</html>
