@@ -1,6 +1,6 @@
 @font-face {
     font-family: Bitstream Vera Sans Mono;
-    src: url(/fonts/veramono.ttf);
+    src: url(../fonts/veramono.ttf);
 }
 
 html, body {

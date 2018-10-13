@@ -4,8 +4,8 @@ var caissiereNummer = 66;
 var kassaNummer = 1;
 var gescandeProducten = [];
 
-const beepSound = new Audio('/sounds/beep.ogg');
-const errorSound = new Audio('/sounds/boop.ogg');
+const beepSound = new Audio('sounds/beep.ogg');
+const errorSound = new Audio('sounds/boop.ogg');
 
 $(document).ready(function() {
     setInterval(getTime, 1000);
