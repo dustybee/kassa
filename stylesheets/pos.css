@@ -138,7 +138,7 @@ button:focus {
 }
 
 .menuoptions {
-    display: none;
+    display: flex;
     flex-flow: column;
     border: 2px solid rgb(221, 217, 213);
     border-top: none;
@@ -238,6 +238,7 @@ break {
     width: 350px;
     border: 2px solid rgb(221, 217, 213);
     border-right: none;
+    overflow: auto;
 }
 
 #bon_header {

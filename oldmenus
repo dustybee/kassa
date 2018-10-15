@@ -1,0 +1,102 @@
+            <!--Start of the menu's-->
+
+
+                <!--het batalen menu-->
+                <div id="betalen" class="menuoptions">
+                    <button data-button="contant"  class="menu_button"><img src="images/pos/contant.png" alt="" align="left">Contant</button>
+                    <button data-button="50-euro" class="menu_button"><img src="images/pos/50-euro.png" alt="" align="left">€ 50</button>
+                    <button data-button="20-euro" class="menu_button"><img src="images/pos/20-euro.png" alt="" align="left">€ 20</button>
+                    <button data-button="10-euro" class="menu_button"><img src="images/pos/10-euro.png" alt="" align="left">€ 10</button>
+                    <button data-button="5-euro" class="menu_button"><img src="images/pos/5-euro.png" alt="" align="left">€ 5</button>
+                    <button data-button="overig-betalen" class="menu_button"><img src="images/pos/euro.png" alt="" align="left">Overig betalen</button>
+                    <button data-button="Pin" class="menu_button"><img src="images/pos/pin-logo.png" alt="" align="left">Pin</button>
+                    <button data-button="terug" class="menu_button"><img src="images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+
+                <!--het Loyalty menu-->
+                <div id="loyalty" class="menuoptions">
+                    <button data-button="airmmiles-opvragen"  class="menu_button"><img src="images/pos/airmiles-opvragen.png" alt="" align="left">Airmiles</br>Opvragen</button>
+                    <button data-button="airmiles-verzilveren" class="menu_button"><img src="images/pos/airmiles-verzilveren.png" alt="" align="left">Airmiles</br>Verzilveren</button>
+                    <button data-button="airmiles-vergoeden" class="menu_button"><img src="images/pos/airmiles-vergoeden.png" alt="" align="left">Airmiles</br>vergoeden</button>
+                    <button data-button="zegels-opvragen" class="menu_button"><img src="images/pos/zegels-opvragen.png" alt="" align="left">Zegels</br>opvragen</button>
+                    <button data-button="guldenzegels-opvragen" class="menu_button"><img src="images/pos/guldenzegels-verzilveren.png" alt="" align="left">Gulden-</br>Zegels</br>verzilveren</button>
+                    <button data-button="mijnbonus" class="menu_button"><img src="images/pos/mijnbonus.png" alt="" align="left">Verreken</br>MijnBonus</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="terug" class="menu_button"><img src="images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+                
+                <!--prijs overig-->
+                <div id="prijs-overig" class="menuoptions">
+                    <button data-button="prijs-opvraag"  class="menu_button"><img src="images/pos/prijs-opvraag.png" alt="" align="left">Prijs opvraag</button>
+                    <button data-button="statiegeld" class="menu_button"><img src="images/pos/statiegeld.png" alt="" align="left">Statiegeld</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="niet-scanbaar" class="menu_button"><img src="images/pos/niet-scanbaar.png" alt="" align="left">Niet</br>scanbaar</button>
+                    <button data-button="dubbele-prijs" class="menu_button"><img src="images/pos/dubbele-prijs.png" alt="" align="left">Dubbele prijs</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="terug" class="menu_button"><img src="images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+                
+                <!--Het hoofd plu-lijst menu-->
+                <div id="plu-lijst" class="menuoptions">
+                    <button data-button="agf-stuks-artikelen"  class="menu_button"><img src="images/pos/agf-stuks-artikelen.png" alt="" align="left">AGF stuks</br>artikelen</button>
+                    <button data-button="agf-wicht-artikelen" class="menu_button"><img src="images/pos/agf-wicht-artikelen.png" alt="" align="left">AGF wicht</br>artikelen</button>
+                    <button data-button="frisdrank-water" class="menu_button"><img src="images/pos/frisdrank-water.png" alt="" align="left">Frisdrank/</br>water</button>
+                    <button data-button="bier-wijn" class="menu_button"><img src="images/pos/bier-wijn.png" alt="" align="left">Bier/</br>wijn</button>
+                    <button data-button="non-food" class="menu_button"><img src="images/pos/kattenbak-korrels-menu.png" alt="" align="left">Non-food</button>
+                    <button data-button="brood" class="menu_button"><img src="images/pos/stokbrood-menu.png" alt="" align="left">Brood</button>
+                    <button data-button="servicebalie-bellen" class="menu_button"><img src="images/pos/mijnbonus.png" alt="" align="left">Servicebalie/</br>bellen</button>
+                    <button data-button="terug" class="menu_button"><img src="images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+
+                <!--correcties menu-->
+                <div id="correcties" class="menuoptions">
+                    <button data-button="eerdere-regelcorrectie"  class="menu_button"><img src="images/pos/eerdere-regelcorrectie.png" alt="" align="left">Eerdere</br>regelcorrectie</button>
+                    <button data-button="regel-correctie" class="menu_button"><img src="images/pos/regelcorrectie.png" alt="" align="left">Regel</br>correctie</button>
+                    <button data-button="print-laatste-bon" class="menu_button"><img src="images/pos/print-laatste-bon.png" alt="" align="left">Print</br>laatste bon</button>
+                    <button data-button="kassacorrectie" class="menu_button"><img src="images/pos/kassacorrectie.png" alt="" align="left">kassa-</br>correctie</button>
+                    <button data-button="zegelcorrectie" class="menu_button"><img src="images/pos/zegel-correctie.png" alt="" align="left">Zegel-</br>correctie</button>
+                    <button data-button="vergoeden" class="menu_button"><img src="images/pos/vergoeden.png" alt="" align="left">Vergoeden</button>
+                    <button data-button="ruilen" class="menu_button"><img src="images/pos/ruilen.png" alt="" align="left">Ruilen</button>
+                    <button data-button="terug" class="menu_button"><img src="images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+
+                <!--Het kassa functies menu-->
+                <div id="kassa-functies" class="menuoptions">
+                    <button data-button="afmelden"  class="menu_button"><img src="images/pos/user.png" alt="" align="left">Afmelden</button>
+                    <button data-button="PIN-EFT-functies" class="menu_button"><img src="images/pos/pin-logo.png" alt="" align="left">Pin/EFT</br>functies</button>
+                    <button data-button="transactie-annuleren" class="menu_button"><img src="images/pos/transactie-annuleren.png" alt="" align="left">Transactie</br>annuleren</button>
+                    <button data-button="parkeren" class="menu_button"><img src="images/pos/parkeren.png" alt="" align="left">Parkeren</button>
+                    <button data-button="opvragen" class="menu_button"><img src="images/pos/opvragen.png" alt="" align="left">Opvragen</button>
+                    <button data-button="scherm-instellingen" class="menu_button"><img src="images/pos/scherm-instellingen.png" alt="" align="left">Scherm</br>instellingen</button>
+                    <button data-button="kassa-status" class="menu_button"><img src="images/pos/kassa-status-ok.png" alt="" align="left">Kassa</br>status OK</button>
+                    <button data-button="terug" class="menu_button"><img src="images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+
+            <!--End of the main menu's -->
+
+            <!--Beginning of the sub-menu's-->
+            
+            <!--AGF stuks artikelen menu-->
+                <div id="agf-stuks-artikelen" class="menuoptions">
+                    <button data-button="groente"  class="menu_button"><img src="images/pos/groente.png" alt="" align="left">Groente</button>
+                    <button data-button="groente2" class="menu_button"><img src="images/pos/groente2.png" alt="" align="left">groente2</button>
+                    <button data-button="appels" class="menu_button"><img src="images/pos/appels.png" alt="" align="left">Appels</button>
+                    <button data-button="peren" class="menu_button"><img src="images/pos/peren.png" alt="" align="left">Peren</button>
+                    <button data-button="fruit-overig" class="menu_button"><img src="images/pos/fruit-overig.png" alt="" align="left">Fruit Overig</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                    <button data-button="terug" class="menu_button"><img src="images/pos/terug.png" alt="back" align="left">Terug</button>
+                </div>
+                
+            <!--Frisdrank water menu-->
+            <div id="frisdrank-water" class="menuoptions">
+                <button data-button="groente"  class="menu_button"><img src="images/pos/groente.png" alt="" align="left">Groente</button>
+                <button data-button="groente2" class="menu_button"><img src="images/pos/groente2.png" alt="" align="left">groente2</button>
+                <button data-button="appels" class="menu_button"><img src="images/pos/appels.png" alt="" align="left">Appels</button>
+                <button data-button="peren" class="menu_button"><img src="images/pos/peren.png" alt="" align="left">Peren</button>
+                <button data-button="fruit-overig" class="menu_button"><img src="images/pos/fruit-overig.png" alt="" align="left">Fruit Overig</button>
+                <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                <button data-button="" class="menu_button">&NonBreakingSpace;</button>
+                <button data-button="terug" class="menu_button"><img src="images/pos/terug.png" alt="back" align="left">Terug</button>
+            </div>

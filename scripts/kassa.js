@@ -1,6 +1,82 @@
 //Dit is de tweede en nieuwe JS file voor de AH POS.
 //Gemaakt door Damian Vera
 
+var menu;
+
+window.addEventListener('load', function(e) {
+    $.ajax({
+        url: './scripts/menu.json',
+        dataType: 'json',
+        success: function (result) {
+            menu = result;
+        }
+    });
+});
+
+var menuoptions = new Vue({
+    el: '#menuoptions',
+    data: {
+        buttons: {
+            button1: {
+                image: 'images/pos/euro.png',
+                text: 'Betalen',
+                menu: 'betalen',
+                action: ''
+            },
+            button2: {
+                image: 'images/pos/bonuskaart_menu.png',
+                text: 'Loyalty',
+                menu: 'loyalty',
+                action: 'nothing()'
+            },
+            button3: {
+                image: 'images/pos/arrow.png',
+                text: 'Prijs overig',
+                menu: 'prijs-overig',
+                action: 'nothing()'
+            },
+            button4: {
+                image: 'images/pos/food-basket.png',
+                text: 'PLU lijst',
+                menu: 'plu-lijst',
+                action: 'showPluList'
+            },
+            button5: {
+                image: 'images/pos/food-basket.png',
+                text: 'PLU lijst multi',
+                menu: 'plu-lijst',
+                action: 'showplulist()'
+            },
+            button6: {
+                image: 'images/pos/eraser.png',
+                text: 'Correcties',
+                menu: 'correcties',
+                action: 'nothing()'
+            },
+            button7: {
+                image: 'images/pos/cog.png',
+                text: 'Kassa Functies',
+                menu: 'kassa-functies',
+                action: 'nothing()'
+            },
+            button8: {
+                action: 'null'
+            }
+        }
+    },
+    methods: {
+        showPluList: function(e) {
+            console.log('hello');
+            
+            $('.container').hide();
+            $('#plu-lijst-screen').css('display', 'grid');
+        },
+        nothing: function(e) {
+
+        }
+    }
+});
+
 
 // de de bliepjes aanmaken
 const beepSound = new Audio('sounds/beep.ogg');
@@ -94,15 +170,38 @@ $('.function_button').click(function(event) {
 });
 
 //uitvoeren wanneer er een plu knop wordt ingedrukt. voegt nu alleen het product toe aan de bon
-$('.plu-button').click(function() {
+$('.plu-button').click(function() { 
+    e = {
+        dataset: {
+            menu: 'hoofdmenu'
+        }
+    }
+    menuButton(e);
+
     $('#product-name').html($(this).data('item'));
     $('#product-price').html($(this).data('price'));
     $('#bon_items').append('<span class="aantal">' + "1" + '</span>');
     $('#bon_items').append('<span class="item_naam">' + $(this).data('item') + '</span>');
     $('#bon_items').append('<span class="prijs">' + $(this).data('price') + '</span>');
+    $('#dataInput').html($(this).data('item') + "<br>€ " + $(this).data('price'));
+    $('.container').show();
+    $('#plu-lijst-screen').css('display', 'none');
 });
 
-$('.menuoptions').click(function() {
-    
-})
-
+function menuButton(e) {
+    if(e.dataset.menu === "plu-lijst") {
+        $('.container').hide();
+        $('#plu-lijst-screen').css('display', 'grid');
+    }
+    try{ 
+        for(buttons in menuoptions.buttons) {
+            menuoptions.buttons[buttons].image = menu[e.dataset.menu][buttons].image;
+            menuoptions.buttons[buttons].text = menu[e.dataset.menu][buttons].text;
+            menuoptions.buttons[buttons].menu = menu[e.dataset.menu][buttons].menu;
+            menuoptions.buttons[buttons].action = menu[e.dataset.menu][buttons].action;
+        }
+    }
+    catch (e) {
+        console.log(e);
+    }
+};
