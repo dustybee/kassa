@@ -1,0 +1,297 @@
+{
+    "hoofdmenu": {
+        "button1": {
+            "image": "images/pos/euro.png",
+            "text": "Betalen",
+            "menu": "betalen"
+        },
+        "button2": {
+            "image": "images/pos/bonuskaart_menu.png",
+            "text": "Loyalty",
+            "menu": "loyalty"
+        },
+        "button3": {
+            "image": "images/pos/arrow.png",
+            "text": "Prijs overig",
+            "menu": "prijs-overig"
+        },
+        "button4": {
+            "image": "images/pos/food-basket.png",
+            "text": "PLU lijst",
+            "menu": "plu-lijst",
+            "action": "showPluList"
+        },
+        "button5": {
+            "image": "images/pos/food-basket.png",
+            "text": "PLU lijst multi",
+            "menu": "plu-lijst"
+        },
+        "button6": {
+            "image": "images/pos/eraser.png",
+            "text": "Correcties",
+            "menu": "correcties"
+        },
+        "button7": {
+            "image": "images/pos/cog.png",
+            "text": "Kassa Functies",
+            "menu": "kassa-functies"
+        },
+        "button8": {
+            "image": "",
+            "text": "",
+            "menu": ""
+        }
+    },
+    "betalen": {
+        "button1": {
+            "image": "images/pos/contant.png",
+            "text": "Contant",
+            "menu": ""
+        },
+        "button2": {
+            "image": "images/pos/50-euro.png",
+            "text": "€ 50",
+            "menu": ""
+        },
+        "button3": {
+            "image": "images/pos/20-euro.png",
+            "text": "€ 20",
+            "menu": ""
+        },
+        "button4": {
+            "image": "images/pos/10-euro.png",
+            "text": "€ 10",
+            "menu": ""
+        },
+        "button5": {
+            "image": "images/pos/5-euro.png",
+            "text": "€ 5",
+            "menu": ""
+        },
+        "button6": {
+            "image": "images/pos/euro.png",
+            "text": "Overig betalen",
+            "menu": ""
+        },
+        "button7": {
+            "image": "images/pos/pin-logo.png",
+            "text": "Pin",
+            "menu": ""
+        },
+        "button8": {
+            "image": "images/pos/terug.png",
+            "text": "Terug",
+            "menu": "hoofdmenu"
+        }
+    },
+    "loyalty": {
+        "button1": {
+            "image": "images/pos/airmiles-opvragen.png",
+            "text": "Opvragen",
+            "menu": ""
+        },
+        "button2": {
+            "image": "images/pos/airmiles-verzilveren.png",
+            "text": "Verzilveren",
+            "menu": ""
+        },
+        "button3": {
+            "image": "images/pos/airmiles-vergoeden.png",
+            "text": "€ 20",
+            "menu": ""
+        },
+        "button4": {
+            "image": "images/pos/zegels-opvragen.png",
+            "text": "€ 10",
+            "menu": ""
+        },
+        "button5": {
+            "image": "images/pos/guldenzegels-verzilveren.png",
+            "text": "€ 5",
+            "menu": ""
+        },
+        "button6": {
+            "image": "images/pos/mijnbonus.png",
+            "text": "Overig betalen",
+            "menu": ""
+        },
+        "button7": {
+            "image": "",
+            "text": "",
+            "menu": ""
+        },
+        "button8": {
+            "image": "images/pos/terug.png",
+            "text": "Terug",
+            "menu": "hoofdmenu"
+        }
+    },
+    "prijs-overig": {
+        "button1": {
+            "image": "images/pos/prijs-opvraag.png",
+            "text": "Prijs opvraag",
+            "menu": ""
+        },
+        "button2": {
+            "image": "images/pos/statiegeld.png",
+            "text": "Statiegeld",
+            "menu": ""
+        },
+        "button3": {
+            "image": "",
+            "text": "",
+            "menu": ""
+        },
+        "button4": {
+            "image": "",
+            "text": "",
+            "menu": ""
+        },
+        "button5": {
+            "image": "images/pos/niet-scanbaar.png",
+            "text": "Niet scanbaar",
+            "menu": ""
+        },
+        "button6": {
+            "image": "images/pos/dubbele-prijs.png",
+            "text": "Dubbele prijs",
+            "menu": ""
+        },
+        "button7": {
+            "image": "",
+            "text": "",
+            "menu": ""
+        },
+        "button8": {
+            "image": "images/pos/terug.png",
+            "text": "Terug",
+            "menu": "hoofdmenu"
+        }
+    },
+    "plu-lijst": {
+        "button1": {
+            "image": "images/pos/agf-stuks-artikelen.png",
+            "text": "AGF stuks",
+            "menu": "agf-stuks"
+        },
+        "button2": {
+            "image": "images/pos/agf-wicht-artikelen.png",
+            "text": "AGF wicht",
+            "menu": "agf-wicht"
+        },
+        "button3": {
+            "image": "images/pos/frisdrank-water.png",
+            "text": "water",
+            "menu": "water"
+        },
+        "button4": {
+            "image": "images/pos/bier-wijn.png",
+            "text": "Bier wijn",
+            "menu": "bier-wijn"
+        },
+        "button5": {
+            "image": "images/pos/kattenbak-korrels-menu.png",
+            "text": "Non-food",
+            "menu": "non-food"
+        },
+        "button6": {
+            "image": "images/pos/stokbrood-menu.png",
+            "text": "Brood",
+            "menu": "brood"
+        },
+        "button7": {
+            "image": "images/pos/mijnbonus.png",
+            "text": "Servicebalie bellen",
+            "menu": "servicebalie-bellen"
+        },
+        "button8": {
+            "image": "images/pos/terug.png",
+            "text": "Terug",
+            "menu": "hoofdmenu"
+        }
+    },
+    "correcties": {
+        "button1": {
+            "image": "images/pos/eerdere-regelcorrectie.png",
+            "text": "Eerdere\n regelcorrectie",
+            "menu": ""
+        },
+        "button2": {
+            "image": "images/pos/regelcorrectie.png",
+            "text": "Regelcorrectie",
+            "menu": ""
+        },
+        "button3": {
+            "image": "images/pos/print-laatste-bon.png",
+            "text": "Print\n laatste bon",
+            "menu": ""
+        },
+        "button4": {
+            "image": "images/pos/kassacorrectie.png",
+            "text": "Kassa-\n correctie",
+            "menu": ""
+        },
+        "button5": {
+            "image": "images/pos/zegel-correctie.png",
+            "text": "Zegel\n correctie",
+            "menu": ""
+        },
+        "button6": {
+            "image": "images/pos/vergoeden.png",
+            "text": "Vergoeden",
+            "menu": ""
+        },
+        "button7": {
+            "image": "images/pos/ruilen.png",
+            "text": "Ruilen",
+            "menu": ""
+        },
+        "button8": {
+            "image": "images/pos/terug.png",
+            "text": "Terug",
+            "menu": "hoofdmenu"
+        }
+    },
+    "kassa-functies": {
+        "button1": {
+            "image": "images/pos/user.png",
+            "text": "Afmelden",
+            "menu": ""
+        },
+        "button2": {
+            "image": "images/pos/pin-logo.png",
+            "text": "Pin/EFT\n functies",
+            "menu": ""
+        },
+        "button3": {
+            "image": "images/pos/transactie-annuleren.png",
+            "text": "Transactie\n anmuleren",
+            "menu": ""
+        },
+        "button4": {
+            "image": "images/pos/parkeren.png",
+            "text": "Parkeren",
+            "menu": ""
+        },
+        "button5": {
+            "image": "images/pos/opvragen.png",
+            "text": "Opvragen",
+            "menu": ""
+        },
+        "button6": {
+            "image": "images/pos/scherm-instellingen.png",
+            "text": "Scherm\n instellingen",
+            "menu": ""
+        },
+        "button7": {
+            "image": "images/pos/kassa-status-ok.png",
+            "text": "status OK",
+            "menu": ""
+        },
+        "button8": {
+            "image": "images/pos/terug.png",
+            "text": "Terug",
+            "menu": "hoofdmenu"
+        }
+    }
+}
