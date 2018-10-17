@@ -2,6 +2,9 @@
 //Gemaakt door Damian Vera
 
 var menu;
+var itemProperties = {};
+var transaction = [];
+var products;
 
 window.addEventListener('load', function(e) {
     $.ajax({
@@ -10,6 +13,16 @@ window.addEventListener('load', function(e) {
         success: function (result) {
             menu = result;
         }
+    });
+    $.ajax({
+        url: './scripts/products.json',
+        dataType: 'json'
+    })
+    .done(res => {
+        products = res;
+    })
+    .fail(res => {
+        this.console.log(res);
     });
 });
 
@@ -94,15 +107,17 @@ function errSnd() {
 
 //maakt alles schoon, zou ook de kassa uit een "state" moeten halen
 function herstel() {
-    $('#dataInput').html("");
-    $('#note_container').html("");
+    $('#dataInputLine1').html("");
+    $('#dataInputLine2').html("");
+    $('#noteContainerLine1').html("");
+    $('#noteContainerLine2').html("");
 }
 
 //de functie om errors te laten zien
 function kassaError(err) {
-    $errorContainer = $('#note_container');
     if (err == "0028") {
-        $errorContainer.html("0028 INGAVE FOUT");
+        herstel();
+        $('#noteContainerLine1').html("0028 INGAVE FOUT");
         errSnd();
     }
 }
@@ -115,58 +130,66 @@ $('button').click(function(event) {
 //wordt uitgevoerd wanneer er geklikt wordt in de number_button_container op een knop met de data-number attribute
 $('#number_button_container').click(function(event) {
     if (!isNaN(event.target.dataset.number)) { //checkt of data-number een value heeft
-        $('#dataInput').append(event.target.dataset.number);
+        if(itemProperties.firstInputAfterAction) {
+            herstel();
+        }
+        $('#dataInputLine1').append(event.target.dataset.number);
+        itemProperties.firstInputAfterAction = false;
     }
 });
 
 //wordt uitgevoerd wanneer er op een nummerieke toets geklikt wordt
 $('html').keydown(function(event) {
+    if(itemProperties.firstInputAfterAction) {
+        herstel();
+        itemProperties.firstInputAfterAction = false;
+    }
     if(!isNaN(event.key)) { //checkt de toets een numerieke toets is
-        $('#dataInput').append(event.key);
+        $('#dataInputLine1').append(event.key);
         beepSound.play();
     }
+    if(event.key == '*') {
+        aantal();
+    }
+    if(event.key == 'Enter') {
+        plu();
+    }
+
 });
 
 //wordt uitgevoerd wanneer er op een functie knop geklikt wordt
 $('.function_button').click(function(event) {
-    $keyboard = event.target.dataset.keyboard;
-    console.log($keyboard);
+    let keyboard = event.target.dataset.keyboard;
+    console.log(keyboard);
 
-    if($keyboard == "subtotaal") {
+    if(keyboard == "subtotaal") {
+        subtotaal();
     }
 
     // plu functie. checkt of plu aangeklikt is
-    if($keyboard == "plu") {
-        $input = parseInt($('#dataInput').text()); //string naar integer
-        $note = $('#note_container');
-        $('#dataInput').text("");
-        if(!isNaN($input)) {
-            console.log($input);
-        }
-        else { kassaError('0028'); }
+    if(keyboard == "plu") {
+        plu();
     }
 
-    $input = parseInt($('#dataInput').text());
-    $note = $('#note_container');
+    let input = parseInt($('#dataInputLine1').text());
+    let note = $('#noteContainerLine1');
 
-    if($keyboard == "aantal") {
-        $amount = parseInt($('#dataInput').text());
-        $('#dataInput').text("");
-        if(!isNaN($input)) {
-            console.log($input);
-            $note.text("REGISTREER ARTIKEL");
-        }
-        else { kassaError('0028'); }
+    if(keyboard == "aantal") {
+        aantal();
     }
 
-    if($keyboard == "procentKorting") {
-        $note.text("REGISTREER ARTIKEL");
+    if(keyboard == "procentKorting") {
+        note.text("REGISTREER ARTIKEL");
     }
 
-    if($keyboard == "zegels") {
+    if(keyboard == "zegels") {
     }
 
-    if($keyboard == "herstel") { herstel() }
+    if(keyboard == "herstel") { herstel() }
+});
+
+$('#bon_items').click(function() {
+    printBon();
 });
 
 //uitvoeren wanneer er een plu knop wordt ingedrukt. voegt nu alleen het product toe aan de bon
@@ -174,16 +197,13 @@ $('.plu-button').click(function() {
     e = {
         dataset: {
             menu: 'hoofdmenu'
+
         }
     }
     menuButton(e);
 
-    $('#product-name').html($(this).data('item'));
-    $('#product-price').html($(this).data('price'));
-    $('#bon_items').append('<span class="aantal">' + "1" + '</span>');
-    $('#bon_items').append('<span class="item_naam">' + $(this).data('item') + '</span>');
-    $('#bon_items').append('<span class="prijs">' + $(this).data('price') + '</span>');
-    $('#dataInput').html($(this).data('item') + "<br>€ " + $(this).data('price'));
+    productInput(undefined, this.dataset.plu, itemProperties.amount, undefined);
+
     $('.container').show();
     $('#plu-lijst-screen').css('display', 'none');
 });
@@ -192,6 +212,10 @@ function menuButton(e) {
     if(e.dataset.menu === "plu-lijst") {
         $('.container').hide();
         $('#plu-lijst-screen').css('display', 'grid');
+    }
+    if(e.dataset.menu === "hoofdmenu") {
+        $('.container').show();
+        $('#plu-lijst-screen').css('display', 'none');
     }
     try{ 
         for(buttons in menuoptions.buttons) {
@@ -205,3 +229,111 @@ function menuButton(e) {
         console.log(e);
     }
 };
+
+function productInput(barcode, plu, amount = 1, discount) {
+    herstel();
+    let product;
+    if (plu) {
+        for(let prodCat in products) {
+            for(let prod in products[prodCat]) {
+                if(products[prodCat][prod].plu == plu) {
+                    product = products[prodCat][prod];
+                }
+            }
+        }
+    } else if (barcode) {
+        for(let prodCat in products) {
+            for(let prod in products[prodCat]) {
+                if(products[prodCat][prod].barcode == plu) {
+                    product = products[prodCat][prod];
+                }
+            }
+        }
+    }
+    let currentItem = product;
+    currentItem.amount = amount;
+    currentItem.discount = discount;
+    currentItem.totalPrice = (currentItem.amount * currentItem.price).toFixed(2);
+    $('#dataInputLine1').html(`
+        <span>`+ currentItem.name +`</span>
+        <span style=\"float: right;\">€ `+currentItem.totalPrice+ `</span>
+    `);
+    $('#dataInputLine2').html(`
+    <span>`+ currentItem.amount +` x €`+currentItem.price+ `</span>
+    `);
+
+    transaction.push(currentItem);
+    addToReceipt(currentItem);
+    itemProperties.firstInputAfterAction = true;
+    itemProperties.amount = 1;
+}
+
+function addToReceipt(product) {
+    $('#bon_items').append('<span class=""></span>');
+    $('#bon_items').append('<span class="item_naam">' + product.name + '</span>');
+    $('#bon_items').append('<span class="prijs">' + product.totalPrice + '</span>');
+    if(product.amount !== 1) {
+        $('#bon_items').append('<span class=""></span>');
+        $('#bon_items').append('<span class="multipleItems" style="margin-left: 10px;">' + product.amount + ' x EUR '+ product.price+'</span>');
+        $('#bon_items').append('<span class=""></span>');
+    }
+}
+
+function eerdereRegelCorrectie() {
+
+}
+
+function aantal() {
+     let amount = parseInt($('#dataInputLine1').text());
+    $('#dataInputLine1').text("");
+    if(!isNaN(amount)) {
+        console.log(amount);
+        $('#noteContainerLine1').text("REGISTREER ARTIKEL");
+        itemProperties.amount = amount;
+    } else {
+        kassaError('0028'); 
+    }
+}
+
+function subtotaal() {
+    let total = 0;
+    for(items in transaction) {
+        total = total + parseFloat(transaction[items].totalPrice);
+    }
+    transaction.total = total;
+    $('#bon_items').append('<span class=""></span>');
+    $('#bon_items').append('<span class=""></span>');
+    $('#bon_items').append('<span class=""></span>');
+    $('#bon_items').append('<span class=""></span>');
+    $('#bon_items').append('<span class="subtotaal" style="">SUBTOTAAL</span>');
+    $('#bon_items').append('<span class="price">'+total.toFixed(2)+'</span>');
+    $('#bon_items').append('<span class=""></span>');
+    $('#bon_items').append('<span class=""></span>');
+    $('#bon_items').append('<span class=""></span>');
+}
+
+function plu() {
+    if(!isNaN(parseInt($('#dataInputLine1').text()))) {
+        productInput(undefined, parseInt($('#dataInputLine1').text()), itemProperties.amount, undefined);
+    }
+    else { kassaError('0028'); }
+}
+
+function printBon() {
+    var WinPrint = window.open('', '', 'left=0,top=0,width=600,height=900,toolbar=0,scrollbars=0,status=0');
+    WinPrint.document.write('<html><head>');
+    WinPrint.document.write('<link rel=\"stylesheet\" href=\"stylesheets/pos.css\">');
+    WinPrint.document.write('<style>span {font-size: 15px !important}</style>');
+    WinPrint.document.write('</head><body><span></span><div style="letter-spacing: -1px; text-align: center!important; font-weight: 400 !important; font-size: 12px!important;">Albert Heijn<br>Groenhof 144<br>020-6456002<br><br>AANTAL&nbsp;&nbsp;&nbsp;&nbsp;OMSCHRIJVING&nbsp;&nbsp;&nbsp;&nbsp;PRIJS&nbsp;BEDRAG<br>--------------------------------------</div>');
+    WinPrint.document.write('<div id="bon_items" style="letter-spacing: 0px; grid-template-rows: 15px; font-size: 12px !important">');
+    for(items in transaction) {
+        WinPrint.document.write('<span>&nbsp;&nbsp;'+transaction[items].amount+'</span>'+'<span>'+transaction[items].name+'</span>'+'<span>'+transaction[items].totalPrice+'<br></span>');
+    }
+    // WinPrint.document.write(prtContent.innerHTML);
+    WinPrint.document.write('<div></body></html>');
+    WinPrint.focus();
+    setInterval(function() {
+        WinPrint.print();
+        WinPrint.close();
+    }, 200);
+}

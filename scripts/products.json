@@ -1,0 +1,148 @@
+{
+    "agf-stuks": [
+        {
+            "name": "AH AUBERGINE",
+            "plu": "5445",
+            "price": " 0.99",
+            "barcode": ""
+        },
+        {
+            "name": "AVOCADO",
+            "plu": "277",
+            "price": "1.09",
+            "barcode": ""
+        },
+        {
+            "name": "BLOEMKOOL",
+            "plu": "3",
+            "price": "1.99",
+            "barcode": ""
+        },
+        {
+            "name": "BOSPEEN",
+            "plu": "88",
+            "price": "1.29",
+            "barcode": ""
+        },
+        {
+            "name": "COURGETTE",
+            "plu": "63",
+            "price": "0.89",
+            "barcode": ""
+        },
+        {
+            "name": "IETS KR AARDAP",
+            "plu": "139",
+            "price": "3.79",
+            "barcode": ""
+        },
+        {
+            "name": "IJSBERGSLA",
+            "plu": "95",
+            "price": "1.19",
+            "barcode": ""
+        },
+        {
+            "name": "KNOLSELDERIJ",
+            "plu": "66",
+            "price": "0.95",
+            "barcode": ""
+        },
+        {
+            "name": "KOMKOMMER",
+            "plu": "10",
+            "price": "0.99",
+            "barcode": ""
+        },
+        {
+            "name": "KROPSLA",
+            "plu": "36",
+            "price": "1.19",
+            "barcode": ""
+        },
+        {
+            "name": "PAPRIKA GEEL",
+            "plu": "247",
+            "price": "0.99",
+            "barcode": ""
+        },
+        {
+            "name": "PAPRIKA GROEN",
+            "plu": "386",
+            "price": "0.99",
+            "barcode": ""
+        },
+        {
+            "name": "PAPRIKA ROOD",
+            "plu": "833",
+            "price": "0.99",
+            "barcode": ""
+        },
+        {
+            "name": "PAPRIKA ORANJE",
+            "plu": "386",
+            "price": "0.99",
+            "barcode": ""
+        },
+        {
+            "name": "SPITSKOOL",
+            "plu": "490",
+            "price": "1.29",
+            "barcode": ""
+        },
+        {
+            "name": "PREI",
+            "plu": "301",
+            "price": "0.55",
+            "barcode": ""
+        },
+        {
+            "name": "SALADE UI",
+            "plu": "198",
+            "price": "0.79",
+            "barcode": ""
+        },
+        {
+            "name": "WINTERPEEN",
+            "plu": "538",
+            "price": "1.29",
+            "barcode": ""
+        },
+        {
+            "name": "VASTKOK AARDAP",
+            "plu": "3.79",
+            "price": "182",
+            "barcode": ""
+        },
+        {
+            "name": "VENKEL",
+            "plu": "306",
+            "price": "1.05",
+            "barcode": ""
+        },
+        {
+            "name": "RADIJS",
+            "plu": "5559",
+            "price": "0.99",
+            "barcode": ""
+        },
+        {
+            "name": "SEREH",
+            "plu": "233",
+            "price": "0.99",
+            "barcode": ""
+        },
+        {
+            "name": "RODE PEPER",
+            "plu": "749",
+            "price": "0.29",
+            "barcode": ""
+        },
+        {
+            "name": "BIO COURGETTE",
+            "plu": "749",
+            "price": "1.49",
+            "barcode": ""
+        }
+    ]
+}
